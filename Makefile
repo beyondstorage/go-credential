@@ -22,7 +22,7 @@ vet:
 
 build: tidy check
 	@echo "build go-credential"
-	@go build -tags tools ./...
+	@go build ./...
 	@echo "ok"
 
 test:

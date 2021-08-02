@@ -1,9 +1,9 @@
-- Author: npofsi [npofsi@outlook.com](mailto:npofsi@outlook.com)
+- Author: npofsi <npofsi@outlook.com>
 - Start Date: 2021-08-02
-- RFC PR: N/A
+- RFC PR: https://github.com/beyondstorage/go-credential/pull/3
 - Tracking Issue: [beyondstorage/go-credential#1](https://github.com/beyondstorage/go-credential/issues/1)
 
-# RFC-1:
+# RFC-3: Add protocol basic
 
 
 ## Background

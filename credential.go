@@ -32,7 +32,7 @@ const (
 	ProtocolBase64 = "base64"
 	// ProtocolBasic will hold user and password credential.
 	//
-	// value = [User, Password]
+	// value = [user, password]
 	ProtocolBasic = "basic"
 )
 

@@ -17,13 +17,14 @@ For example:
 - hmac: `hmac:access_key:secret_key`
 - apikey: `apikey:apikey`
 - file: `file:/path/to/config/file`
+- basic: `basic:user:password`
 
 ## Quick Start
 
 ```go
 cred, err := credential.Parse("hmac:access_key:secret_key)
 if err != nil {
-	log.Fatal("parse: ", err)
+    log.Fatal("parse: ", err)
 }
 
 switch cred.Protocol() {
@@ -42,6 +43,10 @@ case ProtocolEnv:
 case ProtocolBase64:
     content := cred.Base64()
     log.Println("base64: ", content)
+case ProtocolBasic:
+    user, password := cred.Basic()
+    log.Println("user: ", user)
+    log.Println("password: ", password)
 default:
     panic("unsupported protocol")
 }

@@ -30,6 +30,10 @@ const (
 	// Storage service like gcs will take token files as input, we provide base64 protocol so that user
 	// can pass token binary data directly.
 	ProtocolBase64 = "base64"
+	// ProtocolBasic will hold user and password credential.
+	//
+	// value = [user, password]
+	ProtocolBasic = "basic"
 )
 
 // Credential will provide credential protocol and values.
@@ -104,6 +108,18 @@ func (p Credential) Base64() (value string) {
 	return p.args[0]
 }
 
+func (p Credential) Basic() (user, password string) {
+	if p.protocol != ProtocolBasic {
+		panic(Error{
+			Op:       "basic",
+			Err:      ErrInvalidValue,
+			Protocol: p.protocol,
+			Values:   p.args,
+		})
+	}
+	return p.args[0], p.args[1]
+}
+
 // Parse will parse config string to create a credential Credential.
 func Parse(cfg string) (Credential, error) {
 	s := strings.Split(cfg, ":")
@@ -119,6 +135,8 @@ func Parse(cfg string) (Credential, error) {
 		return NewEnv(), nil
 	case ProtocolBase64:
 		return NewBase64(s[1]), nil
+	case ProtocolBasic:
+		return NewBasic(s[1], s[2]), nil
 	default:
 		return Credential{}, &Error{"parse", ErrUnsupportedProtocol, s[0], nil}
 	}
@@ -147,4 +165,9 @@ func NewEnv() Credential {
 // NewBase64 create a base64 provider.
 func NewBase64(value string) Credential {
 	return Credential{ProtocolBase64, []string{value}}
+}
+
+// NewBasic create a basic provider.
+func NewBasic(user, password string) Credential {
+	return Credential{ProtocolBasic, []string{user, password}}
 }

@@ -57,6 +57,12 @@ func TestParse(t *testing.T) {
 			nil,
 		},
 		{
+			"basic",
+			"basic:user:password",
+			Credential{protocol: ProtocolBasic, args: []string{"user", "password"}},
+			nil,
+		},
+		{
 			"not supported protocol",
 			"notsupported:ak:sk",
 			Credential{},
@@ -99,6 +105,10 @@ func ExampleParse() {
 	case ProtocolBase64:
 		content := cred.Base64()
 		log.Println("base64: ", content)
+	case ProtocolBasic:
+		user, password := cred.Basic()
+		log.Println("user: ", user)
+		log.Println("password: ", password)
 	default:
 		panic("unsupported protocol")
 	}

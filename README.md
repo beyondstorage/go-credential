@@ -1,10 +1,14 @@
 # go-credential
 
-[![Build Status](https://github.com/beyondstorage/go-credential/workflows/Unit%20Test/badge.svg?branch=master)](https://github.com/beyondstorage/go-credential/actions?query=workflow%3A%22Unit+Test%22)
-[![Go dev](https://pkg.go.dev/badge/github.com/beyondstorage/go-credential)](https://pkg.go.dev/github.com/beyondstorage/go-credential)
-[![License](https://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/beyondstorage/go-credential/blob/master/LICENSE)
-
 Both human and machine-readable credential format.
+
+## Notes
+
+**This package has been moved to [go-storage](https://github.com/beyondstorage/go-storage/tree/master/credential).**
+
+```shell
+go get go.beyondstorage.io/credential
+```
 
 ## Format
 
